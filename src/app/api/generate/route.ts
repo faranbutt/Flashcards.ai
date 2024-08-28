@@ -40,7 +40,7 @@ async function main(data:string) {
         { role: "user", content: data }
     ],
   })
-  console.log(completion.choices[0].message.content)
+  
   const res = JSON.parse(completion.choices[0].message.content!)
   return res
 }

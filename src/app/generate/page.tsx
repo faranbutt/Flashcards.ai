@@ -32,7 +32,6 @@ export default function Generate() {
   const [saving, setSaving] = useState(false);
   const router = useRouter();
   const handleSubmit = () => {
-    console.log("Inside submit");
     fetch("/api/generate", {
       method: "POST",
       body: text,

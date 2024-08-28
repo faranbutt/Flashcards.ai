@@ -15,7 +15,6 @@ export default function Pricing() {
 
         })
         const checkout_session_json:any = await checkoutSession.json();
-        console.log(checkout_session_json.id)
         if (checkoutSession.status === 500){
             console.error(checkoutSession.statusText)
             return 
