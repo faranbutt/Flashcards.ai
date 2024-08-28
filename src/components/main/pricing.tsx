@@ -20,7 +20,7 @@ export default function Pricing() {
             console.error(checkoutSession.statusText)
             return 
         }
-        const stripe = await getStripe();
+        const stripe : any = await getStripe();
         const {error}  = await stripe.redirectToCheckout({
             sessionId:checkout_session_json.id
         })

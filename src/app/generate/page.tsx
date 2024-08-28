@@ -117,7 +117,7 @@ export default function Generate() {
               FlashCards Preview
             </h2>
             <div className="px-10 grid grid-cols-1 lg:grid-cols-3 gap-5 justify-center items-center">
-              {flashcards.map((flashcard, index) => (
+              {flashcards.map((flashcard:{front:string,back:string}, index) => (
                 <div
                   key={index}
                   onClick={() => handleCardFlipped(index)}

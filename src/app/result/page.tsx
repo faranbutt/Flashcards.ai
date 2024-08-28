@@ -11,7 +11,7 @@ export default function Result() {
   const searchParams = useSearchParams();
   const session_id = searchParams.get("session_id");
   const [loading, setLoading] = useState(true);
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const fetchCheckoutSession = async () => {
