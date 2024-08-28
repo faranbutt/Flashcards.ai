@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import CircularLoading from "@/components/main/circularLoading";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Thankyou } from "@/components/ui/thankyou";
-export default function page() {
+export default function Result() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const session_id = searchParams.get("session_id");
