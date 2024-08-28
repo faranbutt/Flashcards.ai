@@ -19,9 +19,9 @@ const systemPrompt  =  `
 9. Always prioritize accuracy and clarity, cross-checking information when necessary.
 10. Make use of active recall and spaced repetition principles, crafting flashcards that encourage the learner to retrieve information from memory actively.
 11. Only generate 10 flashcards
-Return in the following JSON format
+Return in the following JSON format.Dont write anything before the below object like 'Here are 10 flashcards on the topic of planets:'
 {
-    "flashcard":[
+    "flashcards":[
         {
             "front":str,
             "back":str
@@ -40,8 +40,9 @@ async function main(data:string) {
         { role: "user", content: data }
     ],
   })
-
-  return completion.choices[0].message
+  console.log(completion.choices[0].message.content)
+  const res = JSON.parse(completion.choices[0].message.content!)
+  return res
 }
 
 
@@ -50,5 +51,5 @@ async function main(data:string) {
 export async function POST(req:NextRequest){
     const data =  await req.text();
     const flashcards: any = await main(data);
-    return NextResponse.json(flashcards.flashcard);
+    return NextResponse.json(flashcards.flashcards);
 }
