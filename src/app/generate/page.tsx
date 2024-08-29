@@ -62,8 +62,8 @@ export default function Generate() {
       alert("User not found. Please sign in.");
       return;
     }
-    if (typeof window !== "undefined") {
-      const batch = writeBatch(db);
+  
+    const batch = writeBatch(db);
     const userDocRef = doc(db, "users", user.id);
     const docSnap = await getDoc(userDocRef);
   
@@ -87,8 +87,6 @@ export default function Generate() {
     await batch.commit();
     handleClose();
     router.push("/flashcards");
-    }
-    
   };
   
   return (

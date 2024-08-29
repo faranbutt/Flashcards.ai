@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { SignupSparklesPreview } from '@/components/main/signuplogo'
 export default function page() {
