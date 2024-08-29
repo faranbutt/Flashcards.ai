@@ -2,6 +2,8 @@
 
 Flashcards AI is an intelligent, cloud-based flashcards application that uses AI to help users study and retain information more effectively. Built using modern web technologies, this SaaS app allows users to create, manage, and review flashcards, all while leveraging AI-driven insights for enhanced learning.
 
+## Visit
+[Visit the deployed site](https://flashcards-ai-eight.vercel.app/)
 ## Features
 
 - **AI-Generated Flashcards**: Automatically generate flashcards from provided content using AI.
