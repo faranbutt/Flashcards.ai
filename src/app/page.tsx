@@ -6,6 +6,7 @@ import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { BackgroundBoxesDemo } from "@/components/main/nameMain";
 import Pricing from "@/components/main/pricing";
+import Footer from "@/components/main/footer";
 export default function Home() {
   return (
     <main className="w-screen h-screen">
@@ -22,6 +23,10 @@ export default function Home() {
         <div>
           <Pricing />
         </div>
+
+     </div>
+     <div className="mb-10">
+      <Footer />
      </div>
      
     </main>
