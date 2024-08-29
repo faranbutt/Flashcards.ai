@@ -56,7 +56,6 @@ export default function Result() {
       {session.payment_status === "paid" ? (
         <div className="font-bold text-5xl">
           <Thankyou />
-          <div>Session ID: {session_id} </div>
         </div>
       ) : (
         <div className="mt-10 font-bold text-5xl flex flex-col w-screen h-screen gap-10">
