@@ -51,44 +51,45 @@ export default function Generate() {
       [id]: !prev[id],
     }));
   };
-  if (typeof window !== "undefined") {
-    const saveFlashcards = async () => {
-      if (!name) {
-        alert("Please enter a name");
-        return;
-      }
-    
-      if (!user) {
-        alert("User not found. Please sign in.");
-        return;
-      }
-    
+
+  const saveFlashcards = async () => {
+    if (!name) {
+      alert("Please enter a name");
+      return;
+    }
+  
+    if (!user) {
+      alert("User not found. Please sign in.");
+      return;
+    }
+    if (typeof window !== "undefined") {
       const batch = writeBatch(db);
-      const userDocRef = doc(db, "users", user.id);
-      const docSnap = await getDoc(userDocRef);
-    
-      if (docSnap.exists()) {
-        const collections = docSnap.data().flashcards || [];
-        if (collections.find((f: any) => f.name === name)) {
-          alert("These flashcards with the collection name already exists");
-          return;
-        } else {
-          collections.push({ name });
-          batch.set(userDocRef, { flashcards: collections }, { merge: true });
-        }
+    const userDocRef = doc(db, "users", user.id);
+    const docSnap = await getDoc(userDocRef);
+  
+    if (docSnap.exists()) {
+      const collections = docSnap.data().flashcards || [];
+      if (collections.find((f: any) => f.name === name)) {
+        alert("These flashcards with the collection name already exists");
+        return;
       } else {
-        batch.set(userDocRef, { flashcards: [{ name }] });
+        collections.push({ name });
+        batch.set(userDocRef, { flashcards: collections }, { merge: true });
       }
-      const colRef = collection(userDocRef, name);
-      flashcards.forEach((flashcard) => {
-        const cardDocRef = doc(colRef);
-        batch.set(cardDocRef, flashcard);
-      });
-      await batch.commit();
-      handleClose();
-      router.push("/flashcards");
-    };
-  }
+    } else {
+      batch.set(userDocRef, { flashcards: [{ name }] });
+    }
+    const colRef = collection(userDocRef, name);
+    flashcards.forEach((flashcard) => {
+      const cardDocRef = doc(colRef);
+      batch.set(cardDocRef, flashcard);
+    });
+    await batch.commit();
+    handleClose();
+    router.push("/flashcards");
+    }
+    
+  };
   
   return (
     <div className="w-screen h-screen flex flex-col gap-5">
